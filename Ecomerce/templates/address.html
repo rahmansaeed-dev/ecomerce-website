@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>address</title>
+    	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">	
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'css/mainmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    
+    <style>
+        .form-control{
+            width: 500px;
+            height: 35px;
+        }
+        body{
+            background-color: rgb(178, 92, 92);
+        }
+        .inner-div{
+            width: 600px;
+            /* background-color: rgb(51, 93, 93); */
+            /* width: fit-content; */
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            height: auto;
+        }
+        .inner-div .heading{
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            padding-top: 20px;
+        }
+        .sub-menu{
+            justify-content: right;
+            align-items: center;
+            list-style: none;
+            display: flex;
+            padding: 5px 20px;
+
+        }
+        .sub-menu li a{
+            color: white;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 10px 18px;
+            /* width: fit-content; */
+        }
+        .inner-div .span{
+            font-size: large;
+        }
+        .inner-div .para{
+            color: blue;
+        }
+        .single-product-item .heading{
+            padding: 20px 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="sub-menu">
+        <a href="{% url 'index' %}" class="btn btn-primary m-3">Home</a>
+        <a href="{% url 'checkout' %}" class="btn btn-primary m-3">Back to cart</a>
+        <a href="{% url 'profile' %}" class="btn btn-warning m-3">Profile</a>
+        <a href="{% url 'index' %}" class="btn {{active}} btn btn-warning m-3">Address</a>
+    </ul>
+    <div>
+        {% if address %}
+        {% for add in address %}
+        <div class="inner-div">
+            <div class="col-lg-6 col-md-10 text-center">
+                <div class="single-product-item">
+                    <h3 class="heading text-light">Name : {{add.Name}}</h3>
+                    <p class="product-price text-light"><span>Email : {{add.email}}</span> </p>
+                    <p class="text-light">State : {{add.state}} </p>
+                    <p class="text-light">Zipcode : {{add.zipcode}}</p>
+                    <p class="text-light">Locality : {{add.locality}}</p>
+
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3 class="text-light">No such data.</h3>
+        {% endif %}
+
+    </div>
+</body>
+</html>

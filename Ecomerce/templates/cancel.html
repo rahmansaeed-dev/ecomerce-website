@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Cancel</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .outer-div{
+            width: 100%;
+            height: 600px;
+            background-color: rgb(178, 92, 92);
+        }
+        .inner-div{
+            color: white;
+        }
+        .inner-div .anchor{
+            color: white;
+            font-size: medium;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .inner-div .heading{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 30px;
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-div">
+        <div class="inner-div">
+            <h3 class="heading">you are sure to cancel your payment?</h3><br>
+            <i class="fa-solid fa-circle-check fa-4x" style="display: flex; justify-content: center;"></i><br>
+            <a href="{% url 'index' %}" class="anchor">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>

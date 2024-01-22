@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy Product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- fontawesome -->
+	  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+	  <!-- bootstrap -->
+	  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  </head>
+  <body>
+    <section>
+      <div class="m-2">
+        <div class="product">
+          <div class="description">
+            <h3>Your items Summary</h3>
+            {% if carts %}
+              {% for cart in carts %}
+                <h6>Your Item : <strong>{{cart.product.title}}</strong></h6>
+                <h6>Your Item quantity : <strong>{{cart.quantity}}</strong></h6>
+              {% endfor %}
+            {% else %}
+            <p>No cart here.</p>
+            {% endif %}
+            <!-- Total price  -->
+            {% if total_price %}
+              <h6>Your item price is : <strong>{{total_price}}$</strong></h6>
+            {% endif %}
+          </div>
+        </div>
+        <form action="{% url 'checkoutsession' %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" id="checkout-button" class="btn btn-danger">Pay Now</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

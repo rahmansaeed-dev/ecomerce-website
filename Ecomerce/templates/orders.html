@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Placed</title>
+    	<!-- fontawesome -->
+		<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <!-- owl carousel -->
+		<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+		<!-- magnific popup -->
+		<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+		<!-- animate css -->
+		<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+		<!-- mean menu css -->
+		<link rel="stylesheet" href="{% static 'css/mainmenu.min.css' %}">
+		<!-- main style -->
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <ul class="sub-menu1 text-right container">
+        <a href="{% url 'index' %}" class="btn btn-primary m-3 ">Home</a>
+    </ul>
+    <div class="col-sm-9 offset-sm-1">
+        {% if op %}
+        <h4 class="pt-2">Your Order Detail here.</h4><br>
+        {% for order in op %}
+        <div class="row shadow-sm mb-3">
+            <div class="col-sm-2">
+                <img src="{{order.product.image.url}}" alt="" srcset="" class="img-fluid" height="150" width="150">
+            </div>
+            <div class="col-sm-7">
+                <p>Product : {{order.product.title}} </p>
+                <p>Quantity : {{order.quantity}} </p>
+                <p>Price : {{order.product.price}}$</p>
+            </div>
+            <div class="col-sm-3 fw-bold">
+                <p>Order Status : {{order.status}}</p> 
+                {% if order.status == 'Accepted' %}
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if order.status == 'On the way' %}
+                <div class="progress">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if order.status == 'Deliverd' %}
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if order.status == 'Cancel' %}
+                <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h5 class="mt-3">No information about cart.</h5>
+        {% endif %}
+    </div>
+</body>
+<!-- jquery -->
+<script src="{% static 'js/jquery-1.11.3.min.js'  %}"></script>
+<!-- bootstrap -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- count down -->
+<script src="{% static 'js/jquery.countdown.js' %}"></script>
+<!-- isotope -->
+<script src="{% static 'js/jquery.isotope-3.0.6.min.js' %}"></script>
+<!-- waypoints -->
+<script src="{% static 'js/waypoints.js' %}"></script>
+<!-- owl carousel -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<!-- magnific popup -->
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<!-- mean menu -->
+<script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
+<!-- sticker js -->
+<script src="{% static 'js/sticker.js' %}"></script>
+<!-- main js -->
+<script src="{% static 'js/main.js' %}"></script>
+</html>

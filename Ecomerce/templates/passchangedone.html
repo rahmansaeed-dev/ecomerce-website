@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password changed</title>
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+    <h2 class="text-success text-center " style="margin-top: 30px; font-family: cursive;">Your password has changed Successfully..</h2><br>
+    <i class="fa-solid fa-circle-check fa-4x" style="display: flex; justify-content: center;"></i><br>
+    <a href="{% url 'index' %}" class="anchor" style="display: flex; justify-content: center;">Back to home page</a>
+</body>
+</html>
